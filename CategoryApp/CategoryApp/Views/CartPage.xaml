@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="CategoryApp.Views.CartPage"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.BackButtonTitle="Back"
+             Title="Shopping">
+   
+    <ContentPage.Content>
+        <StackLayout     BackgroundColor="#edf2f4">
+            <CollectionView  ItemsSource="{Binding CartItems}" x:Name="List" VerticalScrollBarVisibility="Always"  >
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" BackgroundColor="#edf2f4">
+                            <Frame CornerRadius="20" HasShadow="True"  >
+                                <StackLayout>
+                                    <ImageButton BackgroundColor="Transparent" 
+                                                     Source="Delete.png" WidthRequest="20" 
+                                                     HorizontalOptions="EndAndExpand"
+                                                     Aspect="AspectFit" 
+                                                     Command="{Binding BindingContext.RemoveItem, Source={x:Reference List}}" CommandParameter="{Binding}" />
+                                    <Grid >
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="40" />
+                                            <RowDefinition Height="40"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <!--Image View Start-->
+
+                                        <Frame Grid.RowSpan="2" Grid.Column="0"
+                                           CornerRadius="10"
+                                           Padding="-10"
+                                          
+                                          
+                                          >
+                                            <Image
+                               Source="{Binding ImageUrl}"
+                               Aspect="AspectFit"
+                                />
+                                        </Frame>
+                                        <!--Image View End-->
+                                        <StackLayout Grid.Column="1" Grid.RowSpan="2" >
+                                            <Label 
+                                            Text="{Binding Name}"
+                                            FontAttributes="Bold" 
+                                            FontSize="Medium"
+                                            VerticalOptions="Center"
+
+                                            TextColor="Black"
+                                      />
+
+                                            <Label 
+                                            TextColor="Black"
+                                            
+                                            Text="{Binding Details}"
+                               />
+
+                                        </StackLayout>
+
+
+                                        <StackLayout Grid.RowSpan="2"
+                                                 Grid.Column="2" >
+
+
+
+                                            <Label TextColor="Black" HorizontalOptions="CenterAndExpand" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <FormattedString.Spans>
+                                                            <Span Text="Rs/-"  />
+                                                            <Span Text="{Binding totalpurchased}" FontAttributes="Bold" FontSize="Small" TextColor="#2F66E7"/>
+                                                        </FormattedString.Spans>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Frame  CornerRadius="20" BackgroundColor="#edf2f4"  Padding="5, 0" HorizontalOptions="CenterAndExpand">
+                                                <StackLayout Orientation="Horizontal" >
+                                                    <Label Text="-" FontSize="Title"  VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Padding="5, 0">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding BindingContext.DecreaseQtyCommand, Source={x:Reference List}}" CommandParameter="{Binding}" />
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+                                                    <Label Text="{Binding purchasedQty, Mode=TwoWay}" FontFamily="ThemeFont" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+
+                                                    <Label Text="+"  FontSize="Title" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Padding="5, 0">
+                                                        <Label.GestureRecognizers>
+
+                                                            <TapGestureRecognizer Command="{Binding BindingContext.IncreaseQtyCommand, Source={x:Reference List}}" CommandParameter="{Binding}" />
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+                                                </StackLayout>
+                                            </Frame>
+
+
+
+
+                                        </StackLayout>
+
+
+
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <BoxView HeightRequest="1" BackgroundColor="#2F66E7"
+               HorizontalOptions="FillAndExpand"/>
+
+
+
+
+
+            <StackLayout Orientation="Horizontal" Margin="20">
+
+
+
+                <Label HorizontalOptions="Start"  TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="TotalBill:" />
+                                <Span Text="1000" TextColor="#2F66E7" FontSize="Medium"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Button Text="Checkout" TextColor="White" BackgroundColor="#2F66E7" WidthRequest="150" CornerRadius="10" HorizontalOptions="EndAndExpand" Command="{Binding NavigateCheckoutPage}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

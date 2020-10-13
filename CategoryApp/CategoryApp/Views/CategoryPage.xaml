@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="CategoryApp.Views.CategoryPage"
+             NavigationPage.HasBackButton="True"
              xmlns:Helpers="clr-namespace:CategoryApp.Helpers" xmlns:ViewModels="clr-namespace:CategoryApp.ViewModels">
     <ContentPage.BindingContext>
         <ViewModels:CategoryPageViewModel/>
@@ -21,7 +22,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" BackgroundColor="#2F66E7">
+            <Grid Grid.Row="0" BackgroundColor="#2F66E7" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -35,27 +36,29 @@
                 </Grid.ColumnDefinitions>
                
                 <Label Text="Super Store" Grid.Row="0" Grid.Column="0"
+                      
                        TextColor="White"
                        FontSize="20" FontAttributes="Bold"
-                       Margin="20,0,0,0"/>
+                       Margin="20,20,0,0"/>
                 <ImageButton BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
                              Source="{
                                         FontImage FontFamily=UserIcon,
-                                        Glyph={x:Static  Helpers:IconFonts.FilterMenu},
-                                        Size=40, Color=White}"
-                             Margin="0,0,10,0" HorizontalOptions="End"/>
+                                        Glyph={x:Static  Helpers:IconFonts.ViewList},
+                                        Size=35, Color=White}"
+                             Margin="0,20,10,0" HorizontalOptions="End"/>
                 <Label Text="5" FontSize="Subtitle"
                        TextColor="White"
                        Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                        HorizontalTextAlignment="End" VerticalTextAlignment="Start"
-                       Margin="0,0,10,0"/>
+                       Margin="0,20,10,0"/>
 
                 <ImageButton BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                              Source="{
                                         FontImage FontFamily=UserIcon,
-                                        Glyph={x:Static  Helpers:IconFonts.ShoppingMusic},
-                                        Size=40, Color=White}"
-                             Margin="0,0,20,0" HorizontalOptions="End"/>
+                                        Glyph={x:Static  Helpers:IconFonts.Cart},
+                                        Size=35, Color=White}"
+                             Margin="0,20,20,0" HorizontalOptions="End"
+                             Command="{Binding ViewCartCommand}"/>
 
             </Grid>
             <Pancake:PancakeView Grid.Row="1" Grid.Column="0"  >

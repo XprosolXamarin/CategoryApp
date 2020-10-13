@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:CategoryApp.ViewModels"
+             x:Class="CategoryApp.Views.CheckoutPage"
+             Title="Checkout"
+             >
+    <ContentPage.BindingContext>
+        <ViewModels:CartViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        
+       
+            <StackLayout Orientation="Vertical" Padding="20">
+
+                <!-- start TIMELINE BUBBLES -->
+                <StackLayout Orientation="Horizontal" Spacing="0" Padding="10, 0">
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD">
+                        <Frame BackgroundColor="#2F66E7" CornerRadius="50"/>
+                    </Frame>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <BoxView BackgroundColor="#DDDDDD" HeightRequest="1"/>
+                    </StackLayout>
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD"/>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <BoxView BackgroundColor="#DDDDDD" HeightRequest="1"/>
+                    </StackLayout>
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Delivery" TextColor="Black"  HorizontalOptions="StartAndExpand"/>
+                    <Label Text="Address" TextColor="#707070"  HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Payments" TextColor="#707070"  HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <!-- end TIMELINE BUBBLES -->
+
+                <!-- start Standard Delivery -->
+                <StackLayout Orientation="Horizontal" Margin="0,30,0,0">
+                    <StackLayout>
+                        <Label Text="Standard Delivery" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
+                        <Label Text="Order will be delivered between 3-5 business days " TextColor="Black" 
+                               FontSize="Small" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <CheckBox Color="#2F66E7" IsChecked="True" HorizontalOptions="EndAndExpand"  />
+
+                </StackLayout>
+                <!-- end Standard Delivery -->
+
+
+
+                <!-- start Next Day Delivery -->
+                <StackLayout Orientation="Horizontal" Margin="0,30,0,0">
+                    <StackLayout>
+                        <Label Text="Next Day Delivery" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
+                        <Label Text="Place your order before 6pm and your items will be delivered the next day" TextColor="Black" 
+                               FontSize="Small" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <CheckBox Color="#2F66E7" HorizontalOptions="EndAndExpand" />
+
+                </StackLayout>
+                <!-- end Next Day Delivery -->
+
+
+                <!-- Start Nominated Delivery -->
+                <StackLayout Orientation="Horizontal" Margin="0,30,0,0">
+                    <StackLayout>
+                        <Label Text="Nominated Delivery" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
+                        <Label Text="Pick a Particular date from the Calendar and order will be delivered on selected date" TextColor="Black" 
+                               FontSize="Small" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <CheckBox Color="#2F66E7"  HorizontalOptions="EndAndExpand"  Margin="10,0,0,0"/>
+
+                </StackLayout>
+                <!-- end Nominated Delivery -->
+
+            <Button CornerRadius="10" Text="NEXT" HorizontalOptions="EndAndExpand" WidthRequest="150" TextColor="White" BackgroundColor="#2F66E7" VerticalOptions="EndAndExpand" Command="{Binding NavigateAddressPage}"/>
+        </StackLayout>
+       
+    </ContentPage.Content>
+</ContentPage>

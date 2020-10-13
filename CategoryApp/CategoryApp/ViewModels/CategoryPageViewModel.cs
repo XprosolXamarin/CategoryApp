@@ -1,8 +1,10 @@
 ﻿using CategoryApp.Models;
+using CategoryApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace CategoryApp.ViewModels
 {
@@ -70,6 +72,17 @@ namespace CategoryApp.ViewModels
                 Descrption = "Men Watches"
 
             });
+        }
+        public Command ViewCartCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new CartPage());
+
+                });
+            }
         }
     }
 
